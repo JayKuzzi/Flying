@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@mipmap/sign_up"
+    android:fitsSystemWindows="true"
+    android:layout_height="match_parent"
+    android:gravity="center">
+    <LinearLayout
+        android:layout_width="95dp"
+        android:layout_height="95dp">
+        <com.bb.offerapp.view.XCImageView
+            android:id="@+id/usermenu_head"
+            android:src="@mipmap/defaule_head"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/usermenu_name"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="#F4FBFE"
+        android:text="username"/>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <Button
+            android:textSize="18sp"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:textColor="#F4FBFE"
+            android:background="@drawable/lyout_board"
+            android:gravity="center"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:text="我 的 订 单"
+            android:id="@+id/usermenu_mylist"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <Button
+            android:textSize="18sp"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:textColor="#F4FBFE"
+            android:background="@drawable/lyout_board"
+            android:gravity="center"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:text="修 改 头 像"
+            android:id="@+id/usermenu_changehead"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <Button
+            android:textSize="18sp"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:textColor="#F4FBFE"
+            android:background="@drawable/lyout_board"
+            android:gravity="center"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:text="修 改 密 码"
+            android:id="@+id/usermenu_changepass"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+
+
+
+
+    <Button
+        android:layout_marginTop="10dp"
+        android:background="@drawable/lyout_board3"
+        android:id="@+id/usermenu_exitlogin"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textSize="20sp"
+        android:textColor="#F4FBFE"
+        android:textAllCaps="false"
+        android:text="退 出 登 录" />
+
+
+
+</LinearLayout>
+

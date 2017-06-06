@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="280dp"
+    android:background="#f4f4f4"
+    android:orientation="vertical"
+    tools:context="com.bb.offerapp.activity.Suggest">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/lyout_board5"
+        android:gravity="start"
+        android:hint="请您反馈对飞送的意见和建议。"
+        android:padding="8dp"
+        android:textColor="#000" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/lyout_board5"
+        android:gravity="start"
+        android:hint="请留下您的邮箱"
+        android:padding="8dp"
+        android:textColor="#000" />
+
+    <Button
+        android:id="@+id/suggest_ok"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/lyout_board4"
+        android:text="立 即 反 馈"
+        android:textAllCaps="false"
+        android:textColor="#F4FBFE"
+        android:textSize="20sp" />
+
+</LinearLayout>

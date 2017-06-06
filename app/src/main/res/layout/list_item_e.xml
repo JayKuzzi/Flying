@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="145dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/item_order_orderNum_e"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="4"
+            android:gravity="left|center"
+            android:text="订单编号"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/item_order_state_e"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="22dp"
+            android:layout_weight="1"
+            android:background="@drawable/lyout_board"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="状态"
+            android:textColor="#258AF3"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="#F0F0F0" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:gravity="center|left"
+
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#AAAAAA"
+                android:layout_marginLeft="15dp"
+                android:textSize="18sp"
+                android:text="寄："/>
+            <com.bb.offerapp.view.MyTextView
+                android:id="@+id/item_order_sendInfo_e"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="left|center"
+                android:text="寄方地址"
+                android:textSize="18sp"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:maxLines="1"
+                android:singleLine="true"/>
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center|left"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#AAAAAA"
+                android:layout_marginLeft="15dp"
+                android:textSize="18sp"
+                android:text="收："/>
+            <com.bb.offerapp.view.MyTextView
+                android:id="@+id/item_order_receiveInfo_e"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="收方地址"
+                android:textSize="18sp"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:maxLines="1"
+                android:singleLine="true"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="#F0F0F0" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/item_order_date_e"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="6"
+            android:gravity="left|center"
+            android:text="订单时间"
+            android:textSize="18sp" />
+    </LinearLayout>
+</LinearLayout>

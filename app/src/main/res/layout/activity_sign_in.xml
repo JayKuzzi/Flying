@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@mipmap/login"
+    android:fitsSystemWindows="true"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    >
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <EditText
+                android:maxLines="1"
+                android:textColor="#F4FBFE"
+                android:textColorHint="#F4FBFE"
+                android:background="@drawable/lyout_board"
+                android:gravity="center"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:hint="Account"
+                android:id="@+id/account"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <EditText
+                android:maxLines="1"
+                android:background="@drawable/lyout_board"
+                android:gravity="center"
+                android:textColor="#F4FBFE"
+                android:textColorHint="#F4FBFE"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:hint="Password"
+                android:id="@+id/password"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:inputType="textPassword" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <android.support.v7.widget.AppCompatCheckBox
+                android:textColor="#F4FBFE"
+                android:visibility="gone"
+                android:theme="@style/MyCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="下次自动登录"/>
+        </LinearLayout>
+
+        <Button
+            android:layout_marginTop="10dp"
+            android:background="@drawable/lyout_board2"
+            android:id="@+id/login"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:textSize="20sp"
+            android:textColor="#F4FBFE"
+            android:textAllCaps="false"
+            android:text="Sign In" />
+
+
+    <TextView
+        android:id="@+id/create"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="15dp"
+        android:textColor="#fff"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="Create an Account"
+        android:textSize="13dp"
+        android:layout_gravity="center"/>
+</LinearLayout>

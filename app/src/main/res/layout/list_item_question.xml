@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/question_tittle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="4"
+            android:gravity="left|center"
+            android:text="订单编号"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/question_content"
+        android:background="#F4F4F4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="寄："
+        android:paddingLeft="16dp"
+        android:paddingTop="4dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="4dp"
+        android:textColor="#AAAAAA"
+        android:textSize="18sp" />
+
+</LinearLayout>

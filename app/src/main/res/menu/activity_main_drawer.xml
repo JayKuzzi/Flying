@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item android:title="Settings">
+        <group>
+            <item
+                android:id="@+id/nav_list"
+                android:icon="@mipmap/menu_list"
+                android:title="我 的 订 单" />
+            <item
+                android:id="@+id/nav_crazy"
+                android:icon="@mipmap/menu_crazy"
+                android:title="抢 单 大 厅" />
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@mipmap/menu_share"
+                android:title="邀 请 好 友" />
+            <item
+                android:id="@+id/nav_express"
+                android:icon="@mipmap/menu_express"
+                android:title="快 递 查 询" />
+
+        </group>
+    </item>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_question"
+                android:icon="@mipmap/help"
+                android:title="常 见 问 题" />
+            <item
+                android:id="@+id/nav_group"
+                android:icon="@mipmap/settings"
+                android:title="设 置 中 心" />
+        </menu>
+    </item>
+
+
+</menu>

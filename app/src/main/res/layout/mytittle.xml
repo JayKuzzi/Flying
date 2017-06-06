@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="#258AF3"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/tittle_back"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="8dp"
+        android:layout_gravity="center"
+        android:src="@mipmap/back" />
+
+    <TextView
+        android:id="@+id/tittle_tittle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="我的订单"
+        android:textColor="#fff"
+        android:textSize="21sp" />
+
+    <ImageView
+        android:id="@+id/tittle_edit"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginRight="18dp"
+        android:layout_gravity="center"
+        android:src="@mipmap/search" />
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/tittle_search"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <Spinner
+            android:layout_marginBottom="-4dp"
+            android:theme="@style/MyEditText"
+            android:id="@+id/tittle_spinner"
+            android:gravity="center|bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+        </Spinner>
+        <EditText
+            android:singleLine="true"
+            android:maxLines="1"
+            android:theme="@style/MyEditText"
+            android:textColor="#fefefe"
+            android:textColorHint="#fefefe"
+            android:hint="请输入关键字"
+            android:textSize="16sp"
+            android:gravity="center|bottom"
+            android:id="@+id/tittle_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/tittle_done"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_gravity="center"
+        android:src="@mipmap/done" />
+</LinearLayout>

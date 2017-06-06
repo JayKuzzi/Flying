@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:background="@drawable/lyout_board4"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/lyout_board"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/receive_info_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="#00ffffff"
+            android:hint="请输入收件人姓名"
+            android:maxLines="1"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:singleLine="true"
+            android:textColor="#fefefe"
+            android:textColorHint="#fefefe" />
+
+        <ImageView
+            android:id="@+id/receive_info_get_contact1"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/contact" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/lyout_board"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/receive_info_phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="#00ffffff"
+            android:hint="请输入收件人手机"
+            android:inputType="number"
+            android:maxLines="1"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:singleLine="true"
+            android:textColor="#fefefe"
+            android:textColorHint="#fefefe" />
+
+        <ImageView
+            android:id="@+id/receive_info_get_contact2"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/contact" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/lyout_board"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/receive_info_address"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="#00ffffff"
+            android:hint="请输入收件人地址"
+            android:maxLines="3"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:textColor="#fefefe"
+            android:textColorHint="#fefefe" />
+
+        <ImageView
+            android:id="@+id/receive_info_get_loc"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/location" />
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="注：右侧按钮可自动定位"
+        android:textColor="#fefefe"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/receive_info_ok"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/lyout_board2"
+        android:text="确认"
+        android:textAllCaps="false"
+        android:textColor="#F4FBFE"
+        android:textSize="20sp" />
+
+
+</LinearLayout>

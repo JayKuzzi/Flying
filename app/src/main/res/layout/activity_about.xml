@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F4F4"
+    android:orientation="vertical">
+
+    <com.bb.offerapp.view.MyTittleInAbout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></com.bb.offerapp.view.MyTittleInAbout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/author"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@mipmap/run_app_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="飞送 v1.0 beta"
+            android:textColor="#000"
+            android:textSize="18sp" />
+
+
+        <LinearLayout
+            android:id="@+id/group"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="信外1班"
+            android:textColor="#000"
+            android:textSize="18sp"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="20140664128   权振源"
+            android:textColor="#000"
+
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="20140664131   孙    特"
+            android:textColor="#000"
+
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="20140664132   谭凯达"
+            android:textColor="#000"
+
+            android:textSize="18sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="20140664135   汪    博"
+            android:textColor="#000"
+
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="少壮不努力,老大徒伤悲"
+            android:textColor="#F4412A"
+            android:textSize="18sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:textSize="18sp"
+            android:textColor="#000"
+
+            android:text="2017-5-20" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center|bottom">
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="20dp"
+            android:src="@mipmap/logo"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|bottom"
+            android:paddingBottom="25dp"
+            android:textColor="#000"
+            android:text="Copyright© 2017 WooBo.me All Rights Reserved"
+            android:textSize="12dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F4F4"
+    android:orientation="vertical"
+    tools:context="com.bb.offerapp.activity.OfferAppMainActivity">
+
+    <com.bb.offerapp.view.MyTittleInDetial
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></com.bb.offerapp.view.MyTittleInDetial>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/activity_order_detail" />
+    </ScrollView>
+
+</LinearLayout>

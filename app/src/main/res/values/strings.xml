@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">飞送</string>
+    <string name="navigation_drawer_open">open</string>
+    <string name="navigation_drawer_close">close</string>
+    <string name="rule">10分钟上门取件，60分钟送达，7×24小时全天服务，专人直送，配送全程监控，快捷又安全！</string>
+
+</resources>

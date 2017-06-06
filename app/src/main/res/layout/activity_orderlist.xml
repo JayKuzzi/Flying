@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F4F4F4"
+    tools:context="com.bb.offerapp.activity.OfferAppMainActivity">
+
+    <com.bb.offerapp.view.MyTittleLayout
+        android:id="@+id/my_tittle_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.bb.offerapp.view.MyTittleLayout>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/orderlist_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        app:tabIndicatorColor="#258AF3"
+        app:tabIndicatorHeight="2dp"
+        app:tabSelectedTextColor="#258AF3"
+        android:background="#FFFFFF"
+        app:tabTextAppearance="@android:style/TextAppearance.Holo.Small"
+        app:tabTextColor="#575757" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scroll_layout">
+        <com.bb.offerapp.view.WrapContentHeightViewPager
+            android:id="@+id/orderlist_viewpaper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </com.bb.offerapp.view.WrapContentHeightViewPager>
+    </ScrollView>
+
+    <android.support.v7.widget.RecyclerView
+        android:visibility="gone"
+        android:id="@+id/recycle_search"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
+</LinearLayout>

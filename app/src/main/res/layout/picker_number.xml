@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/lyout_board4"
+    >
+
+    <NumberPicker
+        android:layout_marginTop="20dp"
+        android:id="@+id/num_pick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </NumberPicker>
+    <Button
+        android:id="@+id/num_pick_ok"
+        android:layout_width="65dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/lyout_board2"
+        android:text="确认"
+        android:textColor="#F4FBFE"
+        android:textSize="20sp" />
+</LinearLayout>

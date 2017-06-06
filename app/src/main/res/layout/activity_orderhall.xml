@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F4F4F4"
+    tools:context="com.bb.offerapp.activity.OfferAppMainActivity">
+
+    <com.bb.offerapp.view.MyTittleInHall
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.bb.offerapp.view.MyTittleInHall>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/hall_recycle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/if_no_order_hall"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:textSize="30sp"
+        android:text="已抢空"
+        android:gravity="center"/>
+
+
+
+
+</LinearLayout>

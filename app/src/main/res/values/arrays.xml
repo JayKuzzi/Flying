@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="type">
+        <item>单号</item>
+        <item>寄方</item>
+        <item>收方</item>
+        <item>日期</item>
+        <item>状态</item>
+    </string-array>
+</resources>

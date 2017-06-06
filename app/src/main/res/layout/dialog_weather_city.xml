@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@drawable/lyout_dialog">
+
+
+    <TextView
+        android:padding="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请输入天气城市"
+        android:textColor="#ffffff"
+        android:textSize="20sp"/>
+    <EditText
+        android:id="@+id/city_namee"
+        android:textColor="#ffffff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="北京"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:textColor="#000000"
+            android:id="@+id/ok"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:text="确认"
+            />
+        <Button
+            android:textColor="#000000"
+            android:id="@+id/cancel"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:text="取消"/>
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dsw="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:background="@mipmap/sign_up"
+    android:layout_height="match_parent"
+    android:gravity="center">
+    <LinearLayout
+        android:layout_width="95dp"
+        android:layout_height="95dp">
+
+        <com.bb.offerapp.view.XCImageView
+            android:id="@+id/sign_head"
+            android:src="@mipmap/defaule_head"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+            />
+        </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <EditText
+            android:digits="1234567890qwertyuiopasdfghjklzxcvbnm"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:textColor="#F4FBFE"
+            android:textColorHint="#F4FBFE"
+            android:background="@drawable/lyout_board"
+            android:gravity="center"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:hint="Account (英文)"
+            android:id="@+id/sign_account"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <EditText
+            android:maxLines="1"
+            android:background="@drawable/lyout_board"
+            android:gravity="center"
+            android:textColor="#F4FBFE"
+            android:textColorHint="#F4FBFE"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:hint="Password"
+            android:id="@+id/sign_password"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:inputType="textPassword" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <EditText
+            android:maxLines="1"
+            android:background="@drawable/lyout_board"
+            android:gravity="center"
+            android:textColor="#F4FBFE"
+            android:textColorHint="#F4FBFE"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:hint="Phonenum"
+            android:id="@+id/sign_phone"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <EditText
+            android:maxLines="1"
+            android:background="@drawable/lyout_board"
+            android:gravity="center"
+            android:textColor="#F4FBFE"
+            android:textColorHint="#F4FBFE"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:hint="E-mail"
+            android:id="@+id/sign_email"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:inputType="textEmailAddress" />
+    </LinearLayout>
+
+
+
+    <Button
+        android:layout_marginTop="10dp"
+        android:background="@drawable/lyout_board2"
+        android:id="@+id/sign_up"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textSize="20sp"
+        android:textColor="#F4FBFE"
+        android:textAllCaps="false"
+        android:text="Sign Up" />
+
+
+    <TextView
+        android:id="@+id/have"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="15dp"
+        android:textColor="#fff"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="I have an Account"
+        android:textSize="13dp"
+        android:layout_gravity="center"/>
+</LinearLayout>

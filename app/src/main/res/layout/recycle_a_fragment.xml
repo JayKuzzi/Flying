@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:background="@drawable/lyout_line"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_margin="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/order_send"/>
+        <com.bb.offerapp.view.MyTextView
+            android:id="@+id/home_send"
+            android:layout_marginLeft="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textSize="18dp"
+            android:text="物品从哪里寄出"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:maxLines="1"
+            android:singleLine="true"/>
+    </LinearLayout>
+    <LinearLayout
+    android:layout_marginTop="10dp"
+    android:background="@drawable/lyout_line"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:layout_marginLeft="6dp"
+    android:layout_marginRight="6dp"
+    android:orientation="horizontal">
+    <ImageView
+        android:layout_margin="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/oder_receive"/>
+    <com.bb.offerapp.view.MyTextView
+        android:id="@+id/home_receive"
+        android:layout_marginLeft="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:textSize="18dp"
+        android:text="物品寄到哪里去"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:maxLines="1"
+        android:singleLine="true"/>
+</LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:background="@drawable/lyout_line"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_margin="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/order_otherinfo"/>
+        <com.bb.offerapp.view.MyTextView
+            android:id="@+id/home_goodsinfo"
+            android:layout_marginLeft="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textSize="18dp"
+            android:text="物品、重量、时间、备注"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:maxLines="1"
+            android:singleLine="true"/>
+    </LinearLayout>
+    <Button
+        android:layout_marginTop="12dp"
+        android:background="@drawable/lyout_board2"
+        android:id="@+id/create_order"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textSize="20sp"
+        android:textColor="#F4FBFE"
+        android:textAllCaps="false"
+        android:text="立即下单" />
+
+
+    <TextView
+        android:id="@+id/price_info"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:textSize="16dp"
+        android:text="价格说明"/>
+
+</LinearLayout>
+

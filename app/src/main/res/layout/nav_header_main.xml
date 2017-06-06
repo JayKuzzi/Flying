@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/login_layout"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:background="#00ffffff"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="6dp"
+        android:orientation="horizontal">
+
+        <com.bb.offerapp.view.XCImageView
+            android:id="@+id/login_head"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="left"
+            android:src="@mipmap/defaule_head_home" />
+
+
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/login_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="未登录"
+                android:textColor="#F6F9F4"
+                android:textSize="23sp" />
+
+            <TextView
+                android:id="@+id/login_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="phone"
+                android:textColor="#F6F9F4"
+                android:textSize="17sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <com.bb.offerapp.view.MyTextView
+        android:id="@+id/login_email"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="12dp"
+        android:gravity="center"
+        android:background="@drawable/lyout_top_bottom_line"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="e-mail"
+        android:textColor="#F6F9F4"
+        android:textSize="18sp" />
+
+</LinearLayout>
