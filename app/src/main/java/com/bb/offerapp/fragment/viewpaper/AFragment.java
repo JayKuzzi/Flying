@@ -123,7 +123,7 @@ public class AFragment extends Fragment implements View.OnClickListener {
                         goodsInfo.getText().toString().equals("物品、重量、时间、备注")) {
                     Toast.makeText(getActivity(), "请填写完整信息", Toast.LENGTH_SHORT).show();
                 } else {
-                    random_distance=random_distance.valueOf(random.nextInt(20))+1;
+                    random_distance=random_distance.valueOf(random.nextInt(20)+1);
                     Intent pay = new Intent(getActivity(), Pay.class);
                     Bundle bundle = new Bundle();
                     bundle.putString("send_info_name", send_info_name);
