@@ -8,4 +8,6 @@
 此系统采用Android SDK类库支持，运用Activity、内容提供者、广播等功能开发框架，数据存储采用 SQLite建立数据，并申请高德地图定位、微信分享等接口、最终生成APK安装包并使其运行在Dalvik VM安卓手机上，通过测试，系统的所有功能都得以实现，具有操作简易，实用性强的优点。
 
 # 截图
-
+![](https://github.com/JayKuzzi/Flying/blob/master/app/appshot/1.png)
+![](https://github.com/JayKuzzi/Flying/blob/master/app/appshot/11111.jpg)
+![](https://github.com/JayKuzzi/Flying/blob/master/app/appshot/2222.jpg)
