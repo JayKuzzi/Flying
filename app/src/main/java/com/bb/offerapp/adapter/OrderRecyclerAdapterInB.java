@@ -36,7 +36,7 @@ public class OrderRecyclerAdapterInB extends RecyclerView.Adapter<OrderRecyclerA
     private ListChangedListener listChangedListener;
 
     public interface ListChangedListener {
-        public void onListChangedClick();
+         void onListChangedClick();
     }
 
     public void setOnListChangedListener (ListChangedListener  listChangedListener) {

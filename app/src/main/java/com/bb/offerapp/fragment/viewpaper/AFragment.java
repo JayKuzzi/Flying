@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -67,6 +68,8 @@ public class AFragment extends Fragment implements View.OnClickListener {
         priceInfo.setOnClickListener(this);
         return view;
     }
+
+
 
     private void init() {
         send = (MyTextView) view.findViewById(R.id.home_send);
