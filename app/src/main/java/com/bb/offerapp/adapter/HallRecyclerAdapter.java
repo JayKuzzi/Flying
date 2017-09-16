@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bb.offerapp.R;
 import com.bb.offerapp.activity.OrderDetail;
@@ -23,7 +24,7 @@ import java.util.List;
  * MyRecyclerAdapter
  */
 public class HallRecyclerAdapter extends RecyclerView.Adapter<HallRecyclerAdapter.MyViewHolder> {
-    int position;//点击的位置，方便拿去做数据库修改
+    private String updateOrderNum; //要抢单的订单号，拿去做数据库修改
     private List<OrderLists> mItemInfoList;
     private OrderHall context;
 
@@ -33,8 +34,8 @@ public class HallRecyclerAdapter extends RecyclerView.Adapter<HallRecyclerAdapte
         this.context = context;
     }
 
-    public int getPosition() {
-        return position;
+    public String getUpdateOrderNum() {
+        return updateOrderNum;
     }
 
     @Override
@@ -50,9 +51,8 @@ public class HallRecyclerAdapter extends RecyclerView.Adapter<HallRecyclerAdapte
         viewHolder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<OrderLists> orderlist = DataSupport.where("state= ?", "待抢").order("id desc").find(OrderLists.class);
-                position = viewHolder.getAdapterPosition();
-                OrderLists clickItem = orderlist.get(position);
+                int position = viewHolder.getAdapterPosition();
+                OrderLists clickItem = mItemInfoList.get(position);
                 Intent intent = new Intent(context, OrderDetail.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("send_info_name", clickItem.getSendInfo_name());
@@ -80,7 +80,13 @@ public class HallRecyclerAdapter extends RecyclerView.Adapter<HallRecyclerAdapte
         viewHolder.item_order_get_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(mItemInfoList.get(viewHolder.getAdapterPosition()).getOrderNum().contains(OrderHall.login_name.toUpperCase())){
+                    Toast.makeText(context,"您不可以抢自己的单",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                updateOrderNum=mItemInfoList.get(viewHolder.getAdapterPosition()).getOrderNum();
                 Intent intent = new Intent(context, WorkerInfo.class);
+                intent.putExtra("workerName",OrderHall.login_name);
                 context.startActivityForResult(intent, 10);
             }
         });

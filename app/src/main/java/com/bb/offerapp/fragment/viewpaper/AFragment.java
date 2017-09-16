@@ -54,8 +54,6 @@ public class AFragment extends Fragment implements View.OnClickListener {
     private MyTextView send, receive, goodsInfo;
     private TextView priceInfo;
     private Button createOrder;
-    private String state;//订单状态
-    private String workerInfo;//配送员信息
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -140,7 +138,7 @@ public class AFragment extends Fragment implements View.OnClickListener {
                     bundle.putString("goods_info_message", goods_info_message);
                     bundle.putString("goods_info_weight", goods_info_weight);
                     bundle.putString("goods_info_hour_of_day", goods_info_hour_of_day);
-                    //随机30公里以内的距离
+                    //随机20公里以内的距离
                     bundle.putString("goods_info_distance",random_distance);
                     bundle.putString("login_name", login_name);
                     pay.putExtras(bundle);

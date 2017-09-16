@@ -1,10 +1,12 @@
 package com.bb.offerapp.adapter;
 
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,7 +16,11 @@ import android.widget.TextView;
 
 import com.bb.offerapp.R;
 import com.bb.offerapp.activity.OrderDetail;
+import com.bb.offerapp.activity.OrderList;
 import com.bb.offerapp.bean.OrderLists;
+import com.bb.offerapp.fragment.viewpaper.OrderAFragment;
+import com.bb.offerapp.util.Constant;
+import com.bb.offerapp.util.WebService;
 
 import org.litepal.crud.DataSupport;
 
@@ -26,12 +32,14 @@ import java.util.List;
 public class OrderRecyclerAdapter extends RecyclerView.Adapter<OrderRecyclerAdapter.MyViewHolder> {
     private List<OrderLists> mItemInfoList;
     private Context context;
+    public ProgressDialog deleteDialog;
+    private String waitDeleteOrderNum;//要删除的订单编号
 
     //监听，拿到BFragment中做回调
     private OrderRecyclerAdapter.ListChangedListener listChangedListener;
 
     public interface ListChangedListener {
-         void onListChangedClick();
+         void onListChangedClick(String DeleteOrderNum);
     }
 
     public void setOnListChangedListener (OrderRecyclerAdapter.ListChangedListener listChangedListener) {
@@ -54,9 +62,8 @@ public class OrderRecyclerAdapter extends RecyclerView.Adapter<OrderRecyclerAdap
         viewHolder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<OrderLists> orderlist = DataSupport.where("state= ?", "待抢").order("id desc").find(OrderLists.class);
                 int position = viewHolder.getAdapterPosition();
-                OrderLists clickItem = orderlist.get(position);
+                OrderLists clickItem = mItemInfoList.get(position);
                 Intent intent =new Intent(context, OrderDetail.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("send_info_name", clickItem.getSendInfo_name());
@@ -86,25 +93,25 @@ public class OrderRecyclerAdapter extends RecyclerView.Adapter<OrderRecyclerAdap
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder dialog1 = new AlertDialog.Builder(context, R.style.AlertDialogCustom);
-                dialog1.setTitle("删除订单");
-                dialog1.setMessage("您确定要删除此订单吗");
+                dialog1.setTitle("取消订单");
+                dialog1.setMessage("您确定要取消此订单吗");
                 dialog1.setCancelable(false);
                 dialog1.setNegativeButton("在考虑下",new DialogInterface.OnClickListener(){
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                     }
                 });
-                dialog1.setPositiveButton("我要删除", new DialogInterface.OnClickListener() {
+                dialog1.setPositiveButton("我要取消", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
-                        List<OrderLists> orderlist = DataSupport.where("state= ?", "待抢").order("id desc").find(OrderLists.class);
-                        OrderLists change = orderlist.get(viewHolder.getAdapterPosition());
-
-                        DataSupport.deleteAll(OrderLists.class,"orderNum = ?", change.getOrderNum());
-
-                        //此时回调此接口，做数据刷新操作
-                        listChangedListener.onListChangedClick();
+                        deleteDialog = new ProgressDialog(context);
+                        deleteDialog.setTitle("正在处理");
+                        deleteDialog.setMessage("正在从数据库删除 请稍后");
+                        deleteDialog.setCancelable(false);
+                        deleteDialog.show();
+                        waitDeleteOrderNum=mItemInfoList.get(viewHolder.getAdapterPosition()).getOrderNum();
+                        //此时回调此接口，拿到要删除的订单号
+                        listChangedListener.onListChangedClick(waitDeleteOrderNum);
                     }
                 });
                 dialog1.show();
@@ -150,5 +157,8 @@ public class OrderRecyclerAdapter extends RecyclerView.Adapter<OrderRecyclerAdap
 
         }
     }
+
+
+
 
 }

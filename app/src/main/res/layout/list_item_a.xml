@@ -134,7 +134,7 @@
             android:background="@drawable/lyout_board3"
             android:gravity="center"
             android:padding="5dp"
-            android:text="删除订单"
+            android:text="取消订单"
             android:textColor="#ffffff"
             android:textSize="16sp" />
     </LinearLayout>

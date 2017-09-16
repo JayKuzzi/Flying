@@ -1,12 +1,15 @@
 package com.bb.offerapp.activity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.IdRes;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -18,7 +21,11 @@ import com.bb.offerapp.R;
 import com.bb.offerapp.bean.OrderLists;
 import com.bb.offerapp.bean.User;
 import com.bb.offerapp.util.BaseActivity;
+import com.bb.offerapp.util.Constant;
+import com.bb.offerapp.util.WebService;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.litepal.crud.DataSupport;
 
 import java.text.SimpleDateFormat;
@@ -30,7 +37,6 @@ public class Pay extends BaseActivity implements
 
     public static final int SUCCESS = 1;
     public static final int FALSE = 2;
-    Random random =new Random();
     //订单信息变量
     String login_name;//下单人员名称，用于下单编号的生成；
     String send_info_name;
@@ -52,47 +58,26 @@ public class Pay extends BaseActivity implements
     private ProgressDialog progressDialog;
     private ProgressDialog loding;
     private String result_pay_method = "";
-    Handler handler = new Handler() {
+    private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if (msg.what == 0) {
-                progressDialog.dismiss();
-                OrderLists newOrder = new OrderLists();
-                newOrder.setOrderNum(login_name.toUpperCase() + getNowDate());
-                newOrder.setDate(getNowDateWithNo_ss());
-                if(Integer.parseInt(goods_info_hour_of_day) < 10){
-                    newOrder.setGo_home_time(getNowDateWithNo_time()+" "+"0"+goods_info_hour_of_day + ":" + goods_info_minute);
-                }else{
-                    newOrder.setGo_home_time(getNowDateWithNo_time()+" "+goods_info_hour_of_day + ":" + goods_info_minute);
-                }
-                newOrder.setDistance(random_distance2);
-                newOrder.setPalWay(result_pay_method);
-                newOrder.setOrderPrice(payMoney.getText().toString());
-                newOrder.setState("待抢");
-                newOrder.setWeight(goods_info_weight);
-                newOrder.setMessage(goods_info_message);
-                newOrder.setWorkerInfo("目前还没有被抢单");
-                newOrder.setGoodsInfo(goods_info_name);
-                newOrder.setSendInfo_name(send_info_name);
-                newOrder.setSendInfo_phone(send_info_phone);
-                newOrder.setSendInfo(send_info_address);
-                newOrder.setReceiverInfo_name(receive_info_name);
-                newOrder.setReceiverInfo_phone(receive_info_phone);
-                newOrder.setReceiverInfo(receive_info_address);
-                newOrder.save();
-                loding = new ProgressDialog(Pay.this);
-                loding.setTitle("正在下单");
-                loding.setMessage("下单完成后自动关闭");
-                loding.setCancelable(false);
-                loding.show();
-                handler.sendEmptyMessageDelayed(1, 3000);
-            }
-            if (msg.what == 1) {
-                loding.dismiss();
-                OrderLists lastUserInDatabase = DataSupport.findLast(OrderLists.class);
-                OrderLists item = new OrderLists(goods_info_name, send_info_name, receive_info_name, result_pay_method, goods_info_weight, goods_info_message);
-                if (item.equals(lastUserInDatabase)) {
+            switch (msg.what){
+                case Constant.SERVER_NOT_RETURN:
+                    loding.dismiss();
+                    ok.setEnabled(true);
+                    Toast.makeText(Pay.this, "服务器无返回 请检查异常", Toast.LENGTH_SHORT).show();
+                    break;
+                case Constant.PAY_DONE:
+                    progressDialog.dismiss();
+                    loding = new ProgressDialog(Pay.this);
+                    loding.setTitle("正在下单");
+                    loding.setMessage("正在将数据写入数据库");
+                    loding.setCancelable(false);
+                    loding.show();
+                    new Thread(new addOrderThread()).start();
+                    break;
+                case Constant.ADD_ORDER_SUCCESS:
+                    loding.dismiss();
                     Toast.makeText(Pay.this, "下单成功", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent();
                     Bundle bundle = new Bundle();
@@ -100,15 +85,18 @@ public class Pay extends BaseActivity implements
                     intent.putExtras(bundle);
                     setResult(RESULT_OK, intent);
                     finish();
-                } else {
-                    Toast.makeText(Pay.this, "下单失败,请联系客服", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent();
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("isSuccess", FALSE);
-                    intent.putExtras(bundle);
-                    setResult(RESULT_OK, intent);
-                }
+                    break;
+                case Constant.ADD_ORDER_FAIL:
+                    loding.dismiss();
+                    Intent intent2 = new Intent();
+                    Bundle bundle2 = new Bundle();
+                    bundle2.putInt("isSuccess", FALSE);
+                    intent2.putExtras(bundle2);
+                    setResult(RESULT_OK, intent2);
+                    finish();
+                    break;
             }
+
         }
     };
 
@@ -192,7 +180,6 @@ public class Pay extends BaseActivity implements
         goods_info_weight = intent.getStringExtra("goods_info_weight");
         goods_info_hour_of_day = intent.getStringExtra("goods_info_hour_of_day");
         random_distance2 = intent.getStringExtra("goods_info_distance");
-        Log.i("tag", random_distance2);
         payMoney.setText(getMoney(goods_info_weight, goods_info_hour_of_day ,random_distance2));
         login_name = intent.getStringExtra("login_name");
     }
@@ -201,17 +188,23 @@ public class Pay extends BaseActivity implements
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.pay_ok:
+                if (!checkNetwork()) {
+                    Toast toast = Toast.makeText(Pay.this, "网络未连接哦", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                    return;
+                }
                 if (result_pay_method.equals("")) {
                     Toast.makeText(this, "请选择支付方式", Toast.LENGTH_SHORT).show();
                 } else {
+                    ok.setEnabled(false);
                     progressDialog = new ProgressDialog(Pay.this);
-                    progressDialog.setTitle("5秒支付完成后自动关闭");
-                    progressDialog.setMessage("正在模拟支付，您的存款不会因此而减少");
+                    progressDialog.setTitle("在线支付");
+                    progressDialog.setMessage("模拟支付，您的存款不会因此而减少");
                     progressDialog.setCancelable(false);
                     progressDialog.show();
-                    handler.sendEmptyMessageDelayed(0, 5000);
+                    handler.sendEmptyMessageDelayed(Constant.PAY_DONE, 3000);
                 }
-
                 break;
         }
 
@@ -251,6 +244,56 @@ public class Pay extends BaseActivity implements
         }
 
         return result.valueOf(total);
+    }
+
+
+    // 检测网络
+    private boolean checkNetwork() {
+        ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connManager.getActiveNetworkInfo() != null) {
+            return connManager.getActiveNetworkInfo().isAvailable();
+        }
+        return false;
+    }
+
+    private class addOrderThread implements Runnable {
+        @Override
+        public void run() {
+            Message message = handler.obtainMessage();
+            JSONObject object=new JSONObject();
+            try {
+                object.put("orderNum", login_name.toUpperCase() + getNowDate());
+                object.put("date",getNowDateWithNo_ss());
+                if(Integer.parseInt(goods_info_hour_of_day) < 10){
+                    object.put("go_home_time",getNowDateWithNo_time()+" "+"0"+goods_info_hour_of_day + ":" + goods_info_minute);
+                }else{
+                    object.put("go_home_time",getNowDateWithNo_time()+" "+goods_info_hour_of_day + ":" + goods_info_minute);
+                }
+                object.put("distance", random_distance2);
+                object.put("palWay", result_pay_method);
+                object.put("orderPrice", payMoney.getText().toString());
+                object.put("state", "待抢");
+                object.put("weight", goods_info_weight);
+                object.put("message", goods_info_message);
+                object.put("workerInfo", "目前还没有被抢单");
+                object.put("goodsInfo", goods_info_name);
+                object.put("sendInfo_name", send_info_name);
+                object.put("sendInfo_phone", send_info_phone);
+                object.put("sendInfo", send_info_address);
+                object.put("receiverInfo_name", receive_info_name);
+                object.put("receiverInfo_phone", receive_info_phone);
+                object.put("receiverInfo", receive_info_address);
+                String result= WebService.executeHttpPost(object,"AddOrder");
+                if(result.equals("")||result==null){
+                    message.what=Constant.SERVER_NOT_RETURN;
+                }else {
+                    message.what=Integer.parseInt(result);
+                }
+                handler.sendMessage(message);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }

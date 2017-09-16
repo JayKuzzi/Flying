@@ -107,7 +107,6 @@
         <activity
             android:name=".activity.Express"
             android:process="com.bb3.web"
-
             android:screenOrientation="portrait"
             android:theme="@style/Express" />
         <activity

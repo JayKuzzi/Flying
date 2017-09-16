@@ -29,7 +29,6 @@ public class SearchRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     public static final int PEI_SONG = 2;
     public static final int DAI_QU = 3;
     public static final int WAN_CHENG = 4;
-    int position;//点击的位置，方便拿去做数据库修改
     private OnItemClickListener mOnItemClickListener = null;
     private List<OrderLists> mItemInfoList;
     private Context context;
@@ -41,10 +40,6 @@ public class SearchRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.mOnItemClickListener = listener;
-    }
-
-    public int getPosition() {
-        return position;
     }
 
     @Override
@@ -195,7 +190,7 @@ public class SearchRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         return mItemInfoList.size();
     }
 
-    public static interface OnItemClickListener {
+    public interface OnItemClickListener {
         void onItemClick(View view, int position);
     }
 

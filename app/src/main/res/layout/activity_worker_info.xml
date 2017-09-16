@@ -15,7 +15,7 @@
         android:layout_marginRight="50dp"
         android:background="@drawable/lyout_board"
         android:orientation="horizontal">
-        <EditText
+        <TextView
             android:id="@+id/worker_info_name"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -26,18 +26,12 @@
             android:layout_gravity="center_vertical"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
-            android:hint="请输入配送员姓名"
+            android:text="配送员姓名不可更改"
             android:maxLines="1"
+            android:textSize="17sp"
             android:singleLine="true"
             android:textColor="#fefefe"
             android:textColorHint="#fefefe" />
-        <ImageView
-            android:id="@+id/worker_info_get_contact1"
-            android:layout_marginRight="10dp"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_gravity="center"
-            android:src="@mipmap/contact"/>
     </LinearLayout>
     <LinearLayout
         android:layout_marginTop="10dp"
@@ -72,16 +66,14 @@
             android:layout_gravity="center"
             android:src="@mipmap/contact"/>
     </LinearLayout>
-
     <TextView
         android:textColor="#fefefe"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="注：抢单后可在我的订单查看"
+        android:text="注：抢单姓名不可修改"
         android:textSize="16sp" />
-
     <Button
         android:layout_marginTop="10dp"
         android:background="@drawable/lyout_board2"

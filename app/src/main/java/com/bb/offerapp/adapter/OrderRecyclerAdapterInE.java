@@ -24,11 +24,6 @@ import java.util.List;
 public class OrderRecyclerAdapterInE extends RecyclerView.Adapter<OrderRecyclerAdapterInE.MyViewHolder> {
     private List<OrderLists> mItemInfoList;
     private Context context;
-    int position;
-
-    public int getPosition() {
-        return position;
-    }
     //构造函数
     public OrderRecyclerAdapterInE(List<OrderLists> itemInfoList, Context context) {
         this.mItemInfoList = itemInfoList;
@@ -45,9 +40,8 @@ public class OrderRecyclerAdapterInE extends RecyclerView.Adapter<OrderRecyclerA
         viewHolder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<OrderLists> orderlist = DataSupport.where("state= ?", "完成").order("id desc").find(OrderLists.class);
-                position = viewHolder.getAdapterPosition();
-                OrderLists clickItem = orderlist.get(position);
+                int position = viewHolder.getAdapterPosition();
+                OrderLists clickItem = mItemInfoList.get(position);
                 Intent intent =new Intent(context, OrderDetail.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("send_info_name", clickItem.getSendInfo_name());

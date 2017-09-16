@@ -251,6 +251,8 @@ public class cal extends BaseActivity implements View.OnClickListener {
                         textView.setText(n1 + opt + n2 + "=");
                         editText.setText((n1 / n2) + "");
                     }
+                }else {
+
                 }
 
                 break;

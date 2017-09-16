@@ -34,6 +34,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -169,12 +170,14 @@ public class OfferAppMainActivity extends AppCompatActivity {
         boolean isRemember = sharedPreferences.getBoolean("remember", false);
         if (isRemember) {
             String account = sharedPreferences.getString("account", "");
-            List<User> userlistbyname = DataSupport.select("account", "phone", "email", "image")
-                    .where("account = ?", account).find(User.class);
-            login_name.setText(userlistbyname.get(0).getAccount());
-            login_phone.setText(userlistbyname.get(0).getPhone());
-            login_email.setText(userlistbyname.get(0).getEmail());
-            login_image.setImageBitmap(Square.centerSquareScaleBitmap(Bytes2Bimap(userlistbyname.get(0).getImage()), 200));
+            String phone = sharedPreferences.getString("phone", "");
+            String email = sharedPreferences.getString("email", "");
+            String image = sharedPreferences.getString("image", "");
+            login_name.setText(account);
+            login_phone.setText(phone);
+            login_email.setText(email);
+            byte[] bytes = Base64.decode(image, Base64.DEFAULT);
+            login_image.setImageBitmap(Square.centerSquareScaleBitmap(BitmapFactory.decodeByteArray(bytes, 0, bytes.length),200));
         } else {
             login_name.setText("未登录");
             login_phone.setText("phone");
@@ -198,10 +201,9 @@ public class OfferAppMainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (login_name.getText().toString().equals("未登录")) {
                     Intent intent = new Intent(OfferAppMainActivity.this, Sign_In.class);
-                    startActivityForResult(intent, 200);
+                    startActivity(intent);
                 } else {
                     Intent intent = new Intent(OfferAppMainActivity.this, UserMenu.class);
-                    intent.putExtra("loginedusername", login_name.getText().toString());
                     startActivity(intent);
                 }
             }
@@ -296,6 +298,7 @@ public class OfferAppMainActivity extends AppCompatActivity {
                         startActivityForResult(intent, 200);
                     } else {
                         Intent intent = new Intent(OfferAppMainActivity.this, OrderList.class);
+                        intent.putExtra("login_name",login_name.getText().toString());
                         startActivity(intent);
 
                     }
@@ -307,6 +310,7 @@ public class OfferAppMainActivity extends AppCompatActivity {
                         startActivityForResult(intent, 200);
                     } else {
                         Intent intent = new Intent(OfferAppMainActivity.this, OrderHall.class);
+                        intent.putExtra("login_name",login_name.getText().toString());
                         startActivity(intent);
 
                     }
@@ -449,13 +453,6 @@ public class OfferAppMainActivity extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    break;
-                case 200:
-                    User user = (User) data.getSerializableExtra("userforlogin");
-                    login_name.setText(user.getAccount());
-                    login_phone.setText(user.getPhone());
-                    login_email.setText(user.getEmail());
-                    login_image.setImageBitmap(Bytes2Bimap(user.getImage()));
                     break;
             }
 

@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.amap.api.location.AMapLocation;
@@ -28,27 +29,27 @@ import java.util.Date;
 
 public class WorkerInfo extends BaseActivity implements View.OnClickListener{
 
-
-    EditText name, phone;
+    TextView name;
+    EditText phone;
     Button ok;
-    ImageView contact1, contact2;
-
+    ImageView  contact2;
+    String workerName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_worker_info);
+        workerName=getIntent().getStringExtra("workerName");
         init();
-        contact1.setOnClickListener(this);
         contact2.setOnClickListener(this);
         ok.setOnClickListener(this);
         setFinishOnTouchOutside(false);
     }
 
     private void init() {
-        name = (EditText) findViewById(R.id.worker_info_name);
+        name = (TextView) findViewById(R.id.worker_info_name);
+        name.setText(workerName);
         phone = (EditText) findViewById(R.id.worker_info_phone);
-        contact1 = (ImageView) findViewById(R.id.worker_info_get_contact1);
         contact2 = (ImageView) findViewById(R.id.worker_info_get_contact2);
         ok = (Button) findViewById(R.id.worker_info_ok);
 
@@ -74,13 +75,6 @@ public class WorkerInfo extends BaseActivity implements View.OnClickListener{
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.worker_info_get_contact1:
-                if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(this, new String[]{ Manifest.permission.READ_CONTACTS }, 2);
-                } else {
-                    readContacts();
-                }
-                break;
             case R.id.worker_info_get_contact2:
                 if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(this, new String[]{ Manifest.permission.READ_CONTACTS }, 2);
@@ -89,17 +83,14 @@ public class WorkerInfo extends BaseActivity implements View.OnClickListener{
                 }
                 break;
             case R.id.worker_info_ok:
-                if (name.getText().toString().equals("")||
-                        phone.getText().toString().equals("")) {
+                if (phone.getText().toString().equals("")) {
                     Toast.makeText(WorkerInfo.this, "请填写完整信息", Toast.LENGTH_SHORT).show();
-                }else if (name.getText().toString().length()<2) {
-                    Toast.makeText(WorkerInfo.this, "姓名至少两位", Toast.LENGTH_SHORT).show();
                 }else if(phone.getText().toString().length()!=11){
                     Toast.makeText(WorkerInfo.this, "请输入11位手机号", Toast.LENGTH_SHORT).show();
                 }else{
                     Intent intent = new Intent();
                     Bundle bundle = new Bundle();
-                    bundle.putString("worker_info_name", name.getText().toString());
+                    bundle.putString("worker_info_name", workerName);
                     bundle.putString("worker_info_phone", phone.getText().toString());
                     intent.putExtras(bundle);
                     setResult(RESULT_OK, intent);
@@ -124,7 +115,6 @@ public class WorkerInfo extends BaseActivity implements View.OnClickListener{
             case 1:
                 if (resultCode == RESULT_OK) {
                     ReadContactMsg readContactMsg = new ReadContactMsg(this,data);
-                    name.setText(readContactMsg.getName());
                     phone.setText(readContactMsg.getPhone());
                 }
                 break;
