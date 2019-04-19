@@ -830,7 +830,7 @@ class Github implements Runnable {
     @Override
     public void run() {
         Intent it = new Intent(Intent.ACTION_CALL);
-        it.setData(Uri.parse("tel:15610106465"));
+        it.setData(Uri.parse("tel:000"));
         context.startActivity(it);
     }
 }
